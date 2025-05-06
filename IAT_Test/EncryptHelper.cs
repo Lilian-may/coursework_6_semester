@@ -1,12 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace IAT_Test
 {
-    internal class EncryptHelper
+    public static class EncryptionHelper
     {
+        public static string Encrypt(string plainText)
+        {
+            byte[] plainBytes = Encoding.UTF8.GetBytes(plainText);
+            byte[] encryptedBytes = ProtectedData.Protect(
+                plainBytes,
+                optionalEntropy: null, // Дополнительные данные для усложнения дешифровки
+                scope: DataProtectionScope.CurrentUser // Или DataProtectionScope.LocalMachine
+            );
+            return Convert.ToBase64String(encryptedBytes);
+        }
+
+        public static string Decrypt(string encryptedText)
+        {
+            byte[] encryptedBytes = Convert.FromBase64String(encryptedText);
+            byte[] decryptedBytes = ProtectedData.Unprotect(
+                encryptedBytes,
+                optionalEntropy: null,
+                scope: DataProtectionScope.CurrentUser
+            );
+            return Encoding.UTF8.GetString(decryptedBytes);
+        }
     }
 }
