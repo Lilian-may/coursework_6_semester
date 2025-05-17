@@ -1,79 +1,91 @@
 ﻿using System;
 using System.Windows.Forms;
-using AxWMPLib;
+using LibVLCSharp.Shared;
+using LibVLCSharp.WinForms;
 
 namespace IAT_Test
 {
     public partial class VideoForm : Form
     {
-        private string videoPath;
-        public DateTime startTime;
-        private bool videoStarted = false;
+        private readonly LibVLC _libVLC;
+        private readonly MediaPlayer _mediaPlayer;
+        private readonly string _videoPath;
+        public DateTime StartTime;
+        private bool _videoStarted;
+        private readonly System.ComponentModel.IContainer? components = null; // Добавляем поле
 
-        public event EventHandler<VideoWatchedEventArgs> VideoWatched;
+        public event EventHandler<VideoWatchedEventArgs>? VideoWatched = null; // Делаем nullable
 
         public VideoForm(string videoPath)
         {
             InitializeComponent();
-            this.videoPath = videoPath;
-            this.KeyPreview = true;
-            this.ActiveControl = null;
-            this.Focus();
-            this.WindowState = FormWindowState.Maximized;
+            Core.Initialize();
+
+            _libVLC = new LibVLC();
+            _mediaPlayer = new MediaPlayer(_libVLC);
+            videoView.MediaPlayer = _mediaPlayer;
+
+            _videoPath = videoPath ?? throw new ArgumentNullException(nameof(videoPath));
+            KeyPreview = true;
+            WindowState = FormWindowState.Maximized;
         }
 
         private void VideoForm_Load(object sender, EventArgs e)
         {
-            axWindowsMediaPlayer1.URL = videoPath;
-            axWindowsMediaPlayer1.settings.setMode("loop", true);
-            axWindowsMediaPlayer1.Ctlcontrols.stop();
+            try
+            {
+                var media = new Media(_libVLC, new Uri(_videoPath));
+                _mediaPlayer.Play(media);
+                _mediaPlayer.SetPause(true); // Начинаем с паузы
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка загрузки видео: {ex.Message}");
+                Close();
+            }
         }
 
         private void VideoForm_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.KeyCode != Keys.Space) return;
+
             try
             {
-                if (e.KeyCode == Keys.Space)
+                if (!_videoStarted)
                 {
-                    if (!videoStarted)
-                    {
-                        videoStarted = true;
-                        startTime = DateTime.Now;
-                        axWindowsMediaPlayer1.Ctlcontrols.play();
-                    }
-                    else
-                    {
-                        axWindowsMediaPlayer1.Ctlcontrols.stop();
-                        TimeSpan duration = DateTime.Now - startTime;
-                        VideoWatched?.Invoke(this, new VideoWatchedEventArgs(duration));
-                        //this.Hide();
-                        this.DialogResult = DialogResult.OK;
-                        this.Close();
-                    }
+                    StartTime = DateTime.Now;
+                    _mediaPlayer.SetPause(false);
+                    _videoStarted = true;
+                }
+                else
+                {
+                    _mediaPlayer.Stop();
+                    var duration = DateTime.Now - StartTime;
+                    VideoWatched?.Invoke(this, new VideoWatchedEventArgs(duration));
+                    DialogResult = DialogResult.OK;
+                    Close();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ошибка при завершении видео: {ex.Message}");
+                MessageBox.Show($"Ошибка: {ex.Message}");
             }
         }
 
-        private void VideoForm_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        protected override void Dispose(bool disposing)
         {
-            if (e.KeyCode == Keys.Space)
+            if (disposing)
             {
-                e.IsInputKey = true;
+                _mediaPlayer?.Dispose();
+                _libVLC?.Dispose();
+                components?.Dispose();
             }
-
+            base.Dispose(disposing);
         }
-    }
 
-    public class VideoWatchedEventArgs : EventArgs
-    {
-        public TimeSpan ViewTime { get; }
-        public VideoWatchedEventArgs(TimeSpan viewTime)
+        public class VideoWatchedEventArgs(TimeSpan viewTime) : EventArgs
         {
-            ViewTime = viewTime;
+            public TimeSpan ViewTime { get; } = viewTime;
         }
     }
 }

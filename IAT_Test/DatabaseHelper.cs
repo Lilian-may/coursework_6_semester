@@ -15,7 +15,7 @@ namespace IAT_Test
             }
 
             // Получение параметров с проверкой на null
-            string host = GetEnvVariable("DB_HOST");
+            string host = GetEnvVariable("DB_HOST", "127.0.0.1");
             string database = GetEnvVariable("DB_NAME");
             string user = GetEnvVariable("DB_USER");
             string password = GetEnvVariable("DB_PASSWORD");
@@ -30,14 +30,14 @@ namespace IAT_Test
                 Password = password,
                 Port = int.Parse(port),
                 SslMode = Npgsql.SslMode.Prefer, // Используем SSL
-                TrustServerCertificate = false,
+                //TrustServerCertificate = false,
                 Pooling = true // Включение пула соединений
             };
 
             return builder.ConnectionString;
         }
 
-        private static string GetEnvVariable(string name, string defaultValue = null)
+        private static string GetEnvVariable(string name, string? defaultValue = null)
         {
             var value = Environment.GetEnvironmentVariable(name)
                       ?? throw new ArgumentNullException($"Environment variable {name} is not set");

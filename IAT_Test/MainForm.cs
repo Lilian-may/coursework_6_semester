@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using OfficeOpenXml;
 
 namespace IAT_Test
 {
@@ -20,7 +19,6 @@ namespace IAT_Test
         public MainForm()
         {
             InitializeComponent();
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
