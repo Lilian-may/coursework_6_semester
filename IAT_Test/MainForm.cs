@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 
 namespace IAT_Test
@@ -9,10 +10,9 @@ namespace IAT_Test
     public partial class MainForm : Form
     {
         //private SettingsForm settingsForm;
-        private List<string> allVideos;
-        private List<string> randomizedVideos;
-        private ParticipantData participant;
-        private string excelFilePath;
+        private List<string>? allVideos;
+        private List<string> randomizedVideos = null!;
+        private ParticipantData participant = null!;
         private int currentVideoIndex = 0;
         //private int videoCount;
 
@@ -82,7 +82,7 @@ namespace IAT_Test
 
             allVideos =
                 LoadVideos(Properties.Settings.Default["VideoFolderPath"]
-                .ToString());
+                .ToString()!);
 
             if (allVideos == null || allVideos.Count() == 0)
             {
@@ -90,7 +90,7 @@ namespace IAT_Test
                     "Ошибка", 
                     MessageBoxButtons.OK, 
                     MessageBoxIcon.Error);
-                MessageBox.Show($"Загружено видео: {allVideos.Count()}", "Отладка");
+                MessageBox.Show($"Загружено видео: {(allVideos == null ? null : allVideos.Count())}", "Отладка");
                 //MessageBox.Show("Папка с видео пустая.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -278,7 +278,7 @@ namespace IAT_Test
 
 
 
-        private List<string> LoadVideos(string folder)
+        private List<string>? LoadVideos(string folder)
         {
             if (!Directory.Exists(folder))
                 return null;

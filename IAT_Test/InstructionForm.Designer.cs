@@ -28,36 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.richTextBoxInstruction = new System.Windows.Forms.RichTextBox();
-            this.SuspendLayout();
+            richTextBoxInstruction = new RichTextBox();
+            SuspendLayout();
             // 
             // richTextBoxInstruction
             // 
-            this.richTextBoxInstruction.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxInstruction.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxInstruction.Cursor = System.Windows.Forms.Cursors.Default;
-            this.richTextBoxInstruction.Location = new System.Drawing.Point(12, 12);
-            this.richTextBoxInstruction.Name = "richTextBoxInstruction";
-            this.richTextBoxInstruction.ReadOnly = true;
-            this.richTextBoxInstruction.Size = new System.Drawing.Size(776, 426);
-            this.richTextBoxInstruction.TabIndex = 1;
-            this.richTextBoxInstruction.TabStop = false;
-            this.richTextBoxInstruction.Text = "Инструкция по прохождению теста";
-            this.richTextBoxInstruction.SelectionChanged += new System.EventHandler(this.richTextBoxInstruction_SelectionChanged);
-            this.richTextBoxInstruction.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBoxInstruction_KeyPress);
+            richTextBoxInstruction.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            richTextBoxInstruction.BorderStyle = BorderStyle.None;
+            richTextBoxInstruction.Location = new Point(12, 15);
+            richTextBoxInstruction.Margin = new Padding(3, 4, 3, 4);
+            richTextBoxInstruction.Name = "richTextBoxInstruction";
+            richTextBoxInstruction.ReadOnly = true;
+            richTextBoxInstruction.Size = new Size(776, 532);
+            richTextBoxInstruction.TabIndex = 1;
+            richTextBoxInstruction.TabStop = false;
+            richTextBoxInstruction.Text = "Инструкция по прохождению теста";
+            richTextBoxInstruction.SelectionChanged += richTextBoxInstruction_SelectionChanged;
+            richTextBoxInstruction.KeyPress += richTextBoxInstruction_KeyPress;
             // 
             // InstructionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.richTextBoxInstruction);
-            this.Name = "InstructionForm";
-            this.Text = "Инструкция";
-            this.Load += new System.EventHandler(this.InstructionForm_Load);
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 562);
+            Controls.Add(richTextBoxInstruction);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "InstructionForm";
+            Text = "Инструкция";
+            ResumeLayout(false);
 
         }
 

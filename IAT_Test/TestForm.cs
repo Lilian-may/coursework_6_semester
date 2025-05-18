@@ -250,17 +250,17 @@ namespace IAT_Test
 {
     public partial class TestForm : Form
     {
-        public event EventHandler<TestResult> TestCompleted;
+        public event EventHandler<TestResult> TestCompleted = null!;
         private bool spacePressed = false;
-        public TestResult TestResult { get; private set; }
-        private string[] scale = new string[7] { "1", "2", "3", "4", "5", "6", "7" };
+        public TestResult TestResult { get; private set; } = null!;
+        private string[] scale = { "1", "2", "3", "4", "5", "6", "7" };
 
         public TestForm()
         {
             InitializeComponent();
             cmbInitialize();
             this.KeyPreview = true;
-            this.KeyDown += TestForm_KeyDown;
+            this.KeyDown += TestForm_KeyDown!;
             this.WindowState = FormWindowState.Maximized;
             this.ActiveControl = null;
         }
@@ -318,15 +318,15 @@ namespace IAT_Test
 
     public class TestResult
     {
-        public string Comfort { get; set; }
-        public string EmotionIntensity { get; set; }
-        public string Sympathy { get; set; }
-        public string Empathy { get; set; }
-        public string Anxiety { get; set; }
-        public string Irritation { get; set; }
-        public string Sadness { get; set; }
-        public string Pleasure { get; set; }
-        public string Rejection { get; set; }
+        public string Comfort { get; set; } = null!;
+        public string EmotionIntensity { get; set; } = null!;
+        public string Sympathy { get; set; } = null!;
+        public string Empathy { get; set; } = null!;
+        public string Anxiety { get; set; } = null!;
+        public string Irritation { get; set; } = null!;
+        public string Sadness { get; set; } = null!;
+        public string Pleasure { get; set; } = null!;
+        public string Rejection { get; set; } = null!;
 
         public string[] ToArray()
         {

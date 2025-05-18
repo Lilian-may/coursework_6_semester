@@ -33,11 +33,6 @@ namespace IAT_Test
             }
         }
 
-        private void InstructionForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void richTextBoxInstruction_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
@@ -48,5 +43,6 @@ namespace IAT_Test
         {
             this.richTextBoxInstruction.SelectionLength = 0;
         }
+
     }
 }

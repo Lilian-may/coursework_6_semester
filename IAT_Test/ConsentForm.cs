@@ -27,11 +27,6 @@ namespace IAT_Test
             }
         }
 
-        private void richTextBoxConsent_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void richTextBoxConsent_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
