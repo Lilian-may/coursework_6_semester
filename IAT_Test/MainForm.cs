@@ -24,11 +24,6 @@
                 // Путь к папке с видео по умолчанию
                 Properties.Settings.Default["VideoFolderPath"] = ".\\videos";
             }
-            /*if (string.IsNullOrEmpty(Properties.Settings.Default["ExcelFilePath"].ToString()))
-            {
-                // Путь к Excel файлу по умолчанию
-                Properties.Settings.Default["ExcelFilePath"] = ".\\files\\Results.xlsx";
-            }*/
             Properties.Settings.Default.Save();
         }
 
@@ -41,7 +36,6 @@
                 {
                     // Сохранение настроек после изменения
                     Properties.Settings.Default["VideoFolderPath"] = settingsForm.VideoFolderPath;
-                    Properties.Settings.Default["ExcelFilePath"] = settingsForm.ExcelFilePath;
                     Properties.Settings.Default.Save();
 
                     MessageBox.Show("Настройки успешно применены.",
@@ -61,10 +55,9 @@
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Properties.Settings.Default["VideoFolderPath"].ToString()) /*||
-                string.IsNullOrEmpty(Properties.Settings.Default["ExcelFilePath"].ToString())*/)
+            if (string.IsNullOrEmpty(Properties.Settings.Default["VideoFolderPath"].ToString()))
             {
-                MessageBox.Show("Сначала настройте путь к видео и файлу Excel в Настройках!",
+                MessageBox.Show("Сначала настройте путь к видео в Настройках!",
                     "Ошибка",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
@@ -97,7 +90,7 @@
             }
 
 
-            if (!Directory.Exists("instruction") || Directory.GetFiles("instruction", "*.txt").Length == 0)
+            if (!Directory.Exists("./exmp") || Directory.GetFiles("./exmp", "*.txt").Length == 0)
             {
                 MessageBox.Show("Папка instruction пуста или отсутствует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;

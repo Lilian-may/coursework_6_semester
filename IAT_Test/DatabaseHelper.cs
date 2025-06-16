@@ -12,14 +12,15 @@ namespace IAT_Test
         public static string GetConnectionString()
         {
             // Загрузка .env файла только для development среды
+            Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Development");
             if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
             {
-                Env.Load();
+                Env.Load(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "..", ".env"));
             }
 
-            string host = GetEnvVariable("DB_HOST", "127.0.0.1");
-            string database = GetEnvVariable("DB_NAME");
-            string user = GetEnvVariable("DB_USER");
+            string host = GetEnvVariable("DB_HOST", "localhost");
+            string database = GetEnvVariable("DB_NAME", "iat_test");
+            string user = GetEnvVariable("DB_USER", "postgres");
             string password = GetEnvVariable("DB_PASSWORD");
             string port = GetEnvVariable("DB_PORT", "5432"); // Порт по умолчанию
 

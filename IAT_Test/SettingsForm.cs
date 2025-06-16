@@ -9,7 +9,7 @@
             InitializeComponent();
 
             // Устанавливаем умолчательные значения
-            string defaultVideoFolder = Path.Combine(Application.StartupPath, "./video");
+            string defaultVideoFolder = Path.Combine(Application.StartupPath, "video");
 
             // Проверяем и создаем директорию video, если она не существует
             if (!Directory.Exists(defaultVideoFolder))

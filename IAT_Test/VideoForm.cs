@@ -15,8 +15,8 @@ namespace IAT_Test
 
         public VideoForm(string videoPath)
         {
-            InitializeComponent();
             Core.Initialize();
+            InitializeComponent();
 
             _libVLC = new LibVLC();
             _mediaPlayer = new MediaPlayer(_libVLC);

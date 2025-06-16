@@ -29,7 +29,7 @@ namespace IAT_Test
             // 
             // btnSelectVideoFolder
             // 
-            btnSelectVideoFolder.Location = new Point(280, 45);
+            btnSelectVideoFolder.Location = new Point(276, 113);
             btnSelectVideoFolder.Name = "btnSelectVideoFolder";
             btnSelectVideoFolder.Size = new Size(135, 39);
             btnSelectVideoFolder.TabIndex = 6;
@@ -39,7 +39,7 @@ namespace IAT_Test
             // 
             // btnApply
             // 
-            btnApply.Location = new Point(182, 358);
+            btnApply.Location = new Point(182, 270);
             btnApply.Name = "btnApply";
             btnApply.Size = new Size(159, 45);
             btnApply.TabIndex = 4;
@@ -49,7 +49,7 @@ namespace IAT_Test
             // 
             // txtVideoPath
             // 
-            txtVideoPath.Location = new Point(20, 45);
+            txtVideoPath.Location = new Point(20, 113);
             txtVideoPath.Name = "txtVideoPath";
             txtVideoPath.ReadOnly = true;
             txtVideoPath.Size = new Size(250, 39);
@@ -58,15 +58,15 @@ namespace IAT_Test
             // lblVideo
             // 
             lblVideo.AutoSize = true;
-            lblVideo.Location = new Point(20, 122);
+            lblVideo.Location = new Point(12, 44);
             lblVideo.Name = "lblVideo";
-            lblVideo.Size = new Size(196, 32);
+            lblVideo.Size = new Size(173, 32);
             lblVideo.TabIndex = 1;
-            lblVideo.Text = "Файл с данными";
+            lblVideo.Text = "Папка с видео";
             // 
             // SettingsForm
             // 
-            ClientSize = new Size(579, 453);
+            ClientSize = new Size(500, 393);
             Controls.Add(lblVideo);
             Controls.Add(txtVideoPath);
             Controls.Add(btnApply);

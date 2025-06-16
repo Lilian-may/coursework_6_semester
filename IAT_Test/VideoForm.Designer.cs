@@ -10,6 +10,8 @@ namespace IAT_Test
         {
             this.videoView = new LibVLCSharp.WinForms.VideoView();
             this.SuspendLayout();
+            this.Load += VideoForm_Load;
+            this.KeyDown += VideoForm_KeyDown;
             // 
             // videoView
             // 
