@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using LibVLCSharp.Shared;
-using LibVLCSharp.WinForms;
+﻿using LibVLCSharp.Shared;
 
 namespace IAT_Test
 {
@@ -12,9 +9,9 @@ namespace IAT_Test
         private readonly string _videoPath;
         public DateTime StartTime;
         private bool _videoStarted;
-        private readonly System.ComponentModel.IContainer? components = null; // Добавляем поле
+        private readonly System.ComponentModel.IContainer? components = null;
 
-        public event EventHandler<VideoWatchedEventArgs>? VideoWatched = null; // Делаем nullable
+        public event EventHandler<VideoWatchedEventArgs>? VideoWatched = null;
 
         public VideoForm(string videoPath)
         {

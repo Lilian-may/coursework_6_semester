@@ -8,6 +8,8 @@
     <UseWindowsForms>true</UseWindowsForms>
     <Platforms>AnyCPU</Platforms>
     <LangVersion>latest</LangVersion>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateResourceWarnOnBinaryFormatterUse>false</GenerateResourceWarnOnBinaryFormatterUse>
   </PropertyGroup>
 
   <ItemGroup>

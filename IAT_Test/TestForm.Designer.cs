@@ -59,7 +59,7 @@ namespace IAT_Test
             label1.Location = new Point(24, 39);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(399, 20);
+            label1.Size = new Size(637, 32);
             label1.TabIndex = 0;
             label1.Text = "В какой степени вам было комфортно смотреть видео  ";
             // 
@@ -69,7 +69,7 @@ namespace IAT_Test
             label2.Location = new Point(24, 88);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(341, 20);
+            label2.Size = new Size(545, 32);
             label2.TabIndex = 1;
             label2.Text = "Насколько сильно люди на видео переживают ";
             // 
@@ -79,7 +79,7 @@ namespace IAT_Test
             label4.Location = new Point(24, 175);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(149, 20);
+            label4.Size = new Size(240, 32);
             label4.TabIndex = 3;
             label4.Text = "Эти люди вызывают";
             // 
@@ -89,7 +89,7 @@ namespace IAT_Test
             label5.Location = new Point(24, 238);
             label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(149, 20);
+            label5.Size = new Size(240, 32);
             label5.TabIndex = 4;
             label5.Text = "Эти люди вызывают";
             // 
@@ -99,7 +99,7 @@ namespace IAT_Test
             label3.Location = new Point(24, 403);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(64, 20);
+            label3.Size = new Size(102, 32);
             label3.TabIndex = 5;
             label3.Text = "Тревогу";
             // 
@@ -109,7 +109,7 @@ namespace IAT_Test
             label6.Location = new Point(24, 462);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(102, 20);
+            label6.Size = new Size(161, 32);
             label6.TabIndex = 6;
             label6.Text = "Раздражение";
             // 
@@ -119,7 +119,7 @@ namespace IAT_Test
             label7.Location = new Point(24, 520);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(60, 20);
+            label7.Size = new Size(95, 32);
             label7.TabIndex = 7;
             label7.Text = "Печаль";
             // 
@@ -129,7 +129,7 @@ namespace IAT_Test
             label8.Location = new Point(24, 573);
             label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(106, 20);
+            label8.Size = new Size(168, 32);
             label8.TabIndex = 8;
             label8.Text = "Удовольствие";
             // 
@@ -139,7 +139,7 @@ namespace IAT_Test
             label9.Location = new Point(24, 623);
             label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(95, 20);
+            label9.Size = new Size(152, 32);
             label9.TabIndex = 9;
             label9.Text = "Отторжение";
             // 
@@ -149,7 +149,7 @@ namespace IAT_Test
             label10.Location = new Point(24, 347);
             label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(157, 20);
+            label10.Size = new Size(252, 32);
             label10.TabIndex = 10;
             label10.Text = "Это видео вызывает: ";
             // 
@@ -160,7 +160,7 @@ namespace IAT_Test
             comboBox1.Location = new Point(602, 39);
             comboBox1.Margin = new Padding(4, 5, 4, 5);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(180, 28);
+            comboBox1.Size = new Size(180, 40);
             comboBox1.TabIndex = 11;
             // 
             // comboBox2
@@ -170,7 +170,7 @@ namespace IAT_Test
             comboBox2.Location = new Point(602, 88);
             comboBox2.Margin = new Padding(4, 5, 4, 5);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(180, 28);
+            comboBox2.Size = new Size(180, 40);
             comboBox2.TabIndex = 12;
             // 
             // comboBox6
@@ -180,7 +180,7 @@ namespace IAT_Test
             comboBox6.Location = new Point(298, 391);
             comboBox6.Margin = new Padding(4, 5, 4, 5);
             comboBox6.Name = "comboBox6";
-            comboBox6.Size = new Size(180, 28);
+            comboBox6.Size = new Size(180, 40);
             comboBox6.TabIndex = 16;
             // 
             // comboBox7
@@ -190,7 +190,7 @@ namespace IAT_Test
             comboBox7.Location = new Point(298, 450);
             comboBox7.Margin = new Padding(4, 5, 4, 5);
             comboBox7.Name = "comboBox7";
-            comboBox7.Size = new Size(180, 28);
+            comboBox7.Size = new Size(180, 40);
             comboBox7.TabIndex = 17;
             // 
             // comboBox8
@@ -200,7 +200,7 @@ namespace IAT_Test
             comboBox8.Location = new Point(298, 508);
             comboBox8.Margin = new Padding(4, 5, 4, 5);
             comboBox8.Name = "comboBox8";
-            comboBox8.Size = new Size(180, 28);
+            comboBox8.Size = new Size(180, 40);
             comboBox8.TabIndex = 18;
             // 
             // comboBox9
@@ -210,7 +210,7 @@ namespace IAT_Test
             comboBox9.Location = new Point(298, 561);
             comboBox9.Margin = new Padding(4, 5, 4, 5);
             comboBox9.Name = "comboBox9";
-            comboBox9.Size = new Size(180, 28);
+            comboBox9.Size = new Size(180, 40);
             comboBox9.TabIndex = 19;
             // 
             // comboBox10
@@ -220,28 +220,28 @@ namespace IAT_Test
             comboBox10.Location = new Point(298, 611);
             comboBox10.Margin = new Padding(4, 5, 4, 5);
             comboBox10.Name = "comboBox10";
-            comboBox10.Size = new Size(180, 28);
+            comboBox10.Size = new Size(180, 40);
             comboBox10.TabIndex = 20;
             // 
             // trackBar1
             // 
-            trackBar1.Location = new Point(466, 172);
+            trackBar1.Location = new Point(482, 175);
             trackBar1.Margin = new Padding(4, 5, 4, 5);
             trackBar1.Maximum = 7;
             trackBar1.Minimum = 1;
             trackBar1.Name = "trackBar1";
-            trackBar1.Size = new Size(255, 56);
+            trackBar1.Size = new Size(255, 90);
             trackBar1.TabIndex = 21;
             trackBar1.Value = 1;
             // 
             // trackBar2
             // 
-            trackBar2.Location = new Point(466, 250);
+            trackBar2.Location = new Point(482, 250);
             trackBar2.Margin = new Padding(4, 5, 4, 5);
             trackBar2.Maximum = 7;
             trackBar2.Minimum = 1;
             trackBar2.Name = "trackBar2";
-            trackBar2.Size = new Size(255, 56);
+            trackBar2.Size = new Size(255, 90);
             trackBar2.TabIndex = 22;
             trackBar2.Value = 1;
             // 
@@ -251,7 +251,7 @@ namespace IAT_Test
             label11.Location = new Point(294, 175);
             label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new Size(118, 20);
+            label11.Size = new Size(194, 32);
             label11.TabIndex = 23;
             label11.Text = "Cочувствие    -3";
             // 
@@ -261,7 +261,7 @@ namespace IAT_Test
             label12.Location = new Point(730, 175);
             label12.Margin = new Padding(4, 0, 4, 0);
             label12.Name = "label12";
-            label12.Size = new Size(123, 20);
+            label12.Size = new Size(199, 32);
             label12.TabIndex = 24;
             label12.Text = "3    Равнодушие ";
             // 
@@ -271,7 +271,7 @@ namespace IAT_Test
             label13.Location = new Point(312, 250);
             label13.Margin = new Padding(4, 0, 4, 0);
             label13.Name = "label13";
-            label13.Size = new Size(112, 20);
+            label13.Size = new Size(181, 32);
             label13.TabIndex = 25;
             label13.Text = "Симпатию    -3";
             // 
@@ -281,15 +281,15 @@ namespace IAT_Test
             label14.Location = new Point(730, 250);
             label14.Margin = new Padding(4, 0, 4, 0);
             label14.Name = "label14";
-            label14.Size = new Size(111, 20);
+            label14.Size = new Size(178, 32);
             label14.TabIndex = 26;
             label14.Text = "3    Антипатию";
             // 
             // TestForm
             // 
             ClientSize = new Size(1176, 752);
-            Controls.Add(label14);
             Controls.Add(label13);
+            Controls.Add(label14);
             Controls.Add(label12);
             Controls.Add(label11);
             Controls.Add(trackBar2);

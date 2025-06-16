@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Windows.Forms;
-
-namespace IAT_Test
+﻿namespace IAT_Test
 {
     public partial class MainForm : Form
     {
-        //private SettingsForm settingsForm;
         private List<string>? allVideos;
         private List<string> randomizedVideos = null!;
         private ParticipantData participant = null!;
         private int currentVideoIndex = 0;
-        //private int videoCount;
 
         public MainForm()
         {
@@ -33,11 +24,11 @@ namespace IAT_Test
                 // Путь к папке с видео по умолчанию
                 Properties.Settings.Default["VideoFolderPath"] = ".\\videos";
             }
-            if (string.IsNullOrEmpty(Properties.Settings.Default["ExcelFilePath"].ToString()))
+            /*if (string.IsNullOrEmpty(Properties.Settings.Default["ExcelFilePath"].ToString()))
             {
                 // Путь к Excel файлу по умолчанию
                 Properties.Settings.Default["ExcelFilePath"] = ".\\files\\Results.xlsx";
-            }
+            }*/
             Properties.Settings.Default.Save();
         }
 
@@ -61,7 +52,7 @@ namespace IAT_Test
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ошибка!", 
+                MessageBox.Show("Ошибка!",
                     ex.Message,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -70,12 +61,12 @@ namespace IAT_Test
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Properties.Settings.Default["VideoFolderPath"].ToString()) ||
-                string.IsNullOrEmpty(Properties.Settings.Default["ExcelFilePath"].ToString()))
+            if (string.IsNullOrEmpty(Properties.Settings.Default["VideoFolderPath"].ToString()) /*||
+                string.IsNullOrEmpty(Properties.Settings.Default["ExcelFilePath"].ToString())*/)
             {
                 MessageBox.Show("Сначала настройте путь к видео и файлу Excel в Настройках!",
-                    "Ошибка", 
-                    MessageBoxButtons.OK, 
+                    "Ошибка",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
                 return;
             }
@@ -86,12 +77,11 @@ namespace IAT_Test
 
             if (allVideos == null || allVideos.Count() == 0)
             {
-                MessageBox.Show("Недостаточно видео в папке.", 
-                    "Ошибка", 
-                    MessageBoxButtons.OK, 
+                MessageBox.Show("Недостаточно видео в папке.",
+                    "Ошибка",
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
                 MessageBox.Show($"Загружено видео: {(allVideos == null ? null : allVideos.Count())}", "Отладка");
-                //MessageBox.Show("Папка с видео пустая.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -99,9 +89,6 @@ namespace IAT_Test
                 ShuffleList(allVideos)
                 .Take(allVideos.Count())
                 .ToList();
-
-            excelFilePath = Properties.Settings.Default["ExcelFilePath"].ToString();
-
 
             if (randomizedVideos == null || randomizedVideos.Count == 0)
             {
@@ -126,7 +113,7 @@ namespace IAT_Test
             var infoForm = new ParticipantInfoForm();
             if (infoForm.ShowDialog() != DialogResult.OK)
             {
-                ExcelHelper.ResetParticipantState();
+                DatabaseHelper.ResetParticipantState();
                 return;
             }
 
@@ -140,89 +127,19 @@ namespace IAT_Test
             PlayNextVideo();
         }
 
-        //private void PlayNextVideo()
-        //{
-        //    if (currentVideoIndex >= randomizedVideos.Count)
-        //    {
-        //        MessageBox.Show("Исследование завершено. Спасибо!", "Благодарность", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        Application.Exit();
-        //        return;
-        //    }
-
-        //    string videoPath = randomizedVideos[currentVideoIndex];
-        //    string videoName = Path.GetFileNameWithoutExtension(videoPath);
-
-        //    var videoForm = new VideoForm(videoPath);
-        //    videoForm.VideoWatched += (s, e) =>
-        //    {
-
-        //        var testForm = new TestForm();
-        //        if (testForm.ShowDialog() == DialogResult.OK)
-        //        {
-        //            var scaleData = testForm.TestResult;
-        //            try
-        //            {
-        //                ExcelHelper.SaveResults(
-        //                    excelFilePath, 
-        //                    participant.Gender, 
-        //                    participant.Age, 
-        //                    participant.Occupation, 
-        //                    participant.Faculty, 
-        //                    participant.StudyForm, 
-        //                    participant.Course, 
-        //                    videoName, 
-        //                    e.ViewTime, 
-        //                    scaleData.ToArray());
-        //            }
-        //            catch (IOException)
-        //            {
-        //                string backupPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Results_backup_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx");
-        //                ExcelHelper.SaveResults(
-        //                    backupPath,
-        //                    participant.Gender, 
-        //                    participant.Age, 
-        //                    participant.Occupation, 
-        //                    participant.Faculty, 
-        //                    participant.StudyForm, 
-        //                    participant.Course, 
-        //                    videoName, 
-        //                    e.ViewTime, 
-        //                    scaleData.ToArray());
-
-        //                MessageBox.Show("Файл Excel был открыт.Данные сохранены в резервный файл.",
-        //                    "Предупреждение",
-        //                    MessageBoxButtons.OK, 
-        //                    MessageBoxIcon.Warning);
-        //            }
-
-        //            currentVideoIndex++;
-        //            PlayNextVideo();
-        //        }
-        //    };
-
-        //    //videoForm.ShowDialog(); // запуск видео
-        //    if (videoForm.ShowDialog() == DialogResult.OK)
-        //    {
-        //        //return;
-        //        videoForm.Close();
-        //        videoForm.Hide();
-        //        return;
-        //    }
-        //}
-
         private void PlayNextVideo()
         {
-            if (currentVideoIndex >= randomizedVideos.Count)
+            if (currentVideoIndex >= randomizedVideos?.Count)
             {
                 MessageBox.Show("Исследование завершено. Спасибо!", "Благодарность", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Application.Exit();
                 return;
             }
 
-            string videoPath = randomizedVideos[currentVideoIndex];
-            string videoName = Path.GetFileNameWithoutExtension(videoPath);
+            string? videoPath = randomizedVideos?[currentVideoIndex];
+            string? videoName = Path.GetFileNameWithoutExtension(videoPath);
 
-            var videoForm = new VideoForm(videoPath);
+            var videoForm = new VideoForm(videoPath ?? string.Empty);
             videoForm.VideoWatched += (s, e) =>
             {
                 var viewTime = e.ViewTime;
@@ -234,34 +151,20 @@ namespace IAT_Test
                         var scaleData = testForm.TestResult;
                         try
                         {
-                            ExcelHelper.SaveResults(
-                                excelFilePath,
-                                participant.Gender,
-                                participant.Age,
-                                participant.Occupation,
-                                participant.Faculty,
-                                participant.StudyForm,
-                                participant.Course,
-                                videoName,
+                            DatabaseHelper.SaveResults(
+                                participant?.Age,
+                                participant?.Gender ?? string.Empty,
+                                participant?.Occupation ?? string.Empty,
+                                videoName ?? string.Empty,
+                                participant?.Faculty ?? string.Empty,
+                                participant?.StudyForm ?? string.Empty,
+                                participant?.Course,
                                 viewTime,
-                                scaleData.ToArray());
+                                scaleData?.ToArray() ?? Array.Empty<string>());
                         }
                         catch (IOException)
                         {
-                            string backupPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, $"Results_backup_{DateTime.Now:yyyyMMdd_HHmmss}.xlsx");
-                            ExcelHelper.SaveResults(
-                                backupPath,
-                                participant.Gender,
-                                participant.Age,
-                                participant.Occupation,
-                                participant.Faculty,
-                                participant.StudyForm,
-                                participant.Course,
-                                videoName,
-                                viewTime,
-                                scaleData.ToArray());
-
-                            MessageBox.Show("Файл Excel был открыт. Данные сохранены в резервный файл.",
+                            MessageBox.Show("Ошибка записи результатов теста.",
                                 "Предупреждение",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
@@ -275,8 +178,6 @@ namespace IAT_Test
 
             videoForm.ShowDialog();
         }
-
-
 
         private List<string>? LoadVideos(string folder)
         {
