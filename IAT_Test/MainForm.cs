@@ -14,7 +14,25 @@
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+
             InitializeAppSettings();
+
+            using (var auth = new AuthorizationForm())
+            {
+                if (auth.ShowDialog() == DialogResult.OK)
+                {
+                    var db = new DatabaseForm();
+                    if (db.ShowDialog() == DialogResult.OK)
+                    {
+                        this.Close();
+                    }
+                }
+                else if (auth.ShowDialog() == DialogResult.Yes)
+                {
+                    this.Show();
+                }
+            }
+
         }
 
         private void InitializeAppSettings()
