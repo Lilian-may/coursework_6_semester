@@ -70,49 +70,65 @@ namespace IAT_Test
                         if (isNewParticipant)
                         {
                             using (var cmd = new NpgsqlCommand(
-                                @"INSERT INTO participants (Name, Age, Gender, Occupation) 
+                                @"INSERT INTO participants (name, age, gender, occupation) 
                                   VALUES (@name, @age, @gender, @occupation) 
                                   RETURNING Id", conn, tran))
                             {
-                                currentParticipantId = Convert.ToInt32(cmd.ExecuteScalar());
+
+                                cmd.Parameters.AddWithValue("name", 'p');
                                 cmd.Parameters.AddWithValue("age", age ?? (object)DBNull.Value);
                                 cmd.Parameters.AddWithValue("gender", gender);
                                 cmd.Parameters.AddWithValue("occupation", occupation);
-                                cmd.Parameters.AddWithValue("name", currentParticipantId);
+
+                                currentParticipantId = Convert.ToInt32(cmd.ExecuteScalar());
                                 isNewParticipant = false;
                             }
                         }
 
                         int videoId;
                         using (var cmd = new NpgsqlCommand(
-                            "SELECT Id FROM videos WHERE FileName = @fileName", conn, tran))
+                            "SELECT id FROM videos WHERE FileName = @fileName", conn, tran))
                         {
                             cmd.Parameters.AddWithValue("fileName", videoFileName);
                             var result = cmd.ExecuteScalar();
-                            if (result == null)
-                                throw new Exception($"Видео '{videoFileName}' не найдено в базе данных.");
-                            videoId = Convert.ToInt32(result);
+
+                            if (result == null || result == DBNull.Value)
+                            {
+                                // Insert new video if it doesn't exist
+                                using (var insertCmd = new NpgsqlCommand(
+                                    "INSERT INTO videos (FileName, CategoryId) VALUES (@fileName, @categoryId) RETURNING id",
+                                    conn, tran))
+                                {
+                                    insertCmd.Parameters.AddWithValue("fileName", videoFileName);
+                                    insertCmd.Parameters.AddWithValue("categoryId", 1); // Default category
+                                    videoId = Convert.ToInt32(insertCmd.ExecuteScalar());
+                                }
+                            }
+                            else
+                            {
+                                videoId = Convert.ToInt32(result);
+                            }
                         }
 
                         using (var cmd = new NpgsqlCommand(
-                            @"INSERT INTO views (ParticipantId, VideoId, ViewStart, ViewEnd) 
-                              VALUES (@participantId, @videoId, @viewTime)
+                            @"INSERT INTO views (participantid, videoid, viewtime) 
+                              VALUES (@participantid, @videoid, @viewtime)
                               RETURNING Id", conn, tran))
                         {
-                            cmd.Parameters.AddWithValue("participantId", currentParticipantId);
-                            cmd.Parameters.AddWithValue("videoId", videoId);
-                            cmd.Parameters.AddWithValue("viewTime", viewTime);
+                            cmd.Parameters.AddWithValue("participantid", currentParticipantId);
+                            cmd.Parameters.AddWithValue("videoid", videoId);
+                            cmd.Parameters.AddWithValue("viewtime", viewTime);
                             currentViewId = Convert.ToInt32(cmd.ExecuteScalar());
                         }
 
                         for (int i = 0; i < scores.Length && i < scores.Length; i++)
                         {
                             using (var cmd = new NpgsqlCommand(
-                                @"INSERT INTO ratings (ViewId, Score) 
-                                  VALUES (@viewId, @score)", conn, tran))
+                                @"INSERT INTO ratings (viewid, score) 
+                                  VALUES (@viewid, @score)", conn, tran))
                             {
-                                cmd.Parameters.AddWithValue("viewId", currentViewId);
-                                cmd.Parameters.AddWithValue("score", scores[i]);
+                                cmd.Parameters.AddWithValue("viewid", currentViewId);
+                                cmd.Parameters.AddWithValue("score", Convert.ToInt32(scores[i]));
                                 cmd.ExecuteNonQuery();
                             }
                         }
