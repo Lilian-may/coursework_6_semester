@@ -1,12 +1,8 @@
-﻿using System;
-using System.IO;
-using System.Windows.Forms;
-
-namespace IAT_Test
+﻿namespace IAT_Test
 {
     public partial class ParticipantInfoForm : Form
     {
-        public ParticipantData ParticipantData { get; private set; }
+        public ParticipantData ParticipantData { get; private set; } = null!;
 
         public ParticipantInfoForm()
         {
@@ -23,7 +19,7 @@ namespace IAT_Test
         {
             try
             {
-                string[] work_places = File.ReadAllText("work_places.txt").Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] work_places = File.ReadAllText("./exmp/work_places.txt").Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (string work_place in work_places)
                 {
                     cmbWorkPlace.Items.Add(work_place.Trim());
@@ -40,7 +36,7 @@ namespace IAT_Test
         {
             try
             {
-                string[] faculties = File.ReadAllText("faculties.txt").Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                string[] faculties = File.ReadAllText("./exmp/faculties.txt").Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 foreach (string faculty in faculties)
                 {
                     cmbFaculty.Items.Add(faculty.Trim());
@@ -55,7 +51,7 @@ namespace IAT_Test
 
         private void LoadStudyForms()
         {
-            string studyFormsPath = Path.Combine(Application.StartupPath, "study_forms.txt");
+            string studyFormsPath = Path.Combine(Application.StartupPath, "./exmp/study_forms.txt");
             if (File.Exists(studyFormsPath))
             {
                 string[] studyForms = File.ReadAllLines(studyFormsPath);
@@ -90,8 +86,8 @@ namespace IAT_Test
 
         private void cmbWorkPlace_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cmbWorkPlace.SelectedItem.ToString() == "Другой вид деятельности (укажите)")
-    {
+            if (cmbWorkPlace?.SelectedItem?.ToString() == "Другой вид деятельности (укажите)")
+            {
                 txtWorkPlaceAdditional.Enabled = true;
                 txtWorkPlaceAdditional.Visible = true;
                 lblWorkPlaceAdditional.Visible = true;
@@ -112,7 +108,7 @@ namespace IAT_Test
                 lblGrade.Visible = true;
             }
 
-            if (cmbWorkPlace.SelectedItem.ToString() == "Студент")
+            if (cmbWorkPlace?.SelectedItem?.ToString() == "Студент")
             {
                 cmbFaculty.Visible = true;
                 cmbStudyForm.Visible = true;
@@ -140,11 +136,11 @@ namespace IAT_Test
                 ParticipantData = new ParticipantData
                 {
                     Age = int.Parse(txtAge.Text),
-                    Gender = cmbGender.SelectedItem.ToString(),
-                    Occupation = txtWorkPlaceAdditional.Visible ? txtWorkPlaceAdditional.Text.ToString() : cmbWorkPlace.SelectedItem.ToString(),
-                    Faculty = cmbFaculty.Visible ? cmbFaculty.SelectedItem.ToString() : "",
-                    StudyForm = cmbStudyForm.Visible ? cmbStudyForm.SelectedItem.ToString() : "",
-                    Course = cmbGrade.Visible ? int.Parse(cmbGrade.SelectedItem.ToString()) : 0
+                    Gender = cmbGender.SelectedItem?.ToString() ?? string.Empty,
+                    Occupation = txtWorkPlaceAdditional.Visible ? txtWorkPlaceAdditional.Text.ToString() : cmbWorkPlace.SelectedItem?.ToString() ?? string.Empty,
+                    Faculty = cmbFaculty.Visible ? cmbFaculty?.SelectedItem?.ToString() : string.Empty,
+                    StudyForm = cmbStudyForm.Visible ? cmbStudyForm.SelectedItem?.ToString() : string.Empty,
+                    Course = cmbGrade.Visible ? int.Parse(cmbGrade.SelectedItem?.ToString() ?? string.Empty) : 0
                 };
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -156,10 +152,10 @@ namespace IAT_Test
     public partial class ParticipantData
     {
         public int Age { get; set; }
-        public string Gender { get; set; }
-        public string Occupation { get; set; }
-        public string Faculty { get; set; }
-        public string StudyForm { get; set; }
+        public string? Gender { get; set; }
+        public string? Occupation { get; set; }
+        public string? Faculty { get; set; }
+        public string? StudyForm { get; set; }
         public int Course { get; set; }
     }
 }

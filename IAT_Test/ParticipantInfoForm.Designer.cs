@@ -27,184 +27,173 @@ namespace IAT_Test
 
         private void InitializeComponent()
         {
-            this.lblAge = new System.Windows.Forms.Label();
-            this.lblGender = new System.Windows.Forms.Label();
-            this.lblOccupation = new System.Windows.Forms.Label();
-            this.txtAge = new System.Windows.Forms.TextBox();
-            this.cmbGender = new System.Windows.Forms.ComboBox();
-            this.cmbWorkPlace = new System.Windows.Forms.ComboBox();
-            this.lblFaculty = new System.Windows.Forms.Label();
-            this.cmbFaculty = new System.Windows.Forms.ComboBox();
-            this.lblStudyForm = new System.Windows.Forms.Label();
-            this.cmbStudyForm = new System.Windows.Forms.ComboBox();
-            this.lblGrade = new System.Windows.Forms.Label();
-            this.cmbGrade = new System.Windows.Forms.ComboBox();
-            this.txtWorkPlaceAdditional = new System.Windows.Forms.TextBox();
-            this.lblWorkPlaceAdditional = new System.Windows.Forms.Label();
-            this.SuspendLayout();
+            lblAge = new Label();
+            lblGender = new Label();
+            lblOccupation = new Label();
+            txtAge = new TextBox();
+            cmbGender = new ComboBox();
+            cmbWorkPlace = new ComboBox();
+            lblFaculty = new Label();
+            cmbFaculty = new ComboBox();
+            lblStudyForm = new Label();
+            cmbStudyForm = new ComboBox();
+            lblGrade = new Label();
+            cmbGrade = new ComboBox();
+            txtWorkPlaceAdditional = new TextBox();
+            lblWorkPlaceAdditional = new Label();
+            SuspendLayout();
             // 
             // lblAge
             // 
-            this.lblAge.AutoSize = true;
-            this.lblAge.Location = new System.Drawing.Point(23, 27);
-            this.lblAge.Name = "lblAge";
-            this.lblAge.Size = new System.Drawing.Size(62, 16);
-            this.lblAge.TabIndex = 12;
-            this.lblAge.Text = "Возраст";
+            lblAge.AutoSize = true;
+            lblAge.Location = new Point(23, 31);
+            lblAge.Name = "lblAge";
+            lblAge.Size = new Size(100, 32);
+            lblAge.TabIndex = 12;
+            lblAge.Text = "Возраст";
             // 
             // lblGender
             // 
-            this.lblGender.AutoSize = true;
-            this.lblGender.Location = new System.Drawing.Point(23, 57);
-            this.lblGender.Name = "lblGender";
-            this.lblGender.Size = new System.Drawing.Size(33, 16);
-            this.lblGender.TabIndex = 11;
-            this.lblGender.Text = "Пол";
+            lblGender.AutoSize = true;
+            lblGender.Location = new Point(23, 72);
+            lblGender.Name = "lblGender";
+            lblGender.Size = new Size(58, 32);
+            lblGender.TabIndex = 11;
+            lblGender.Text = "Пол";
             // 
             // lblOccupation
             // 
-            this.lblOccupation.AutoSize = true;
-            this.lblOccupation.Location = new System.Drawing.Point(23, 87);
-            this.lblOccupation.Name = "lblOccupation";
-            this.lblOccupation.Size = new System.Drawing.Size(89, 16);
-            this.lblOccupation.TabIndex = 10;
-            this.lblOccupation.Text = "Род занятий";
+            lblOccupation.AutoSize = true;
+            lblOccupation.Location = new Point(23, 126);
+            lblOccupation.Name = "lblOccupation";
+            lblOccupation.Size = new Size(148, 32);
+            lblOccupation.TabIndex = 10;
+            lblOccupation.Text = "Род занятий";
             // 
             // txtAge
             // 
-            this.txtAge.Location = new System.Drawing.Point(164, 27);
-            this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(200, 22);
-            this.txtAge.TabIndex = 2;
-            this.txtAge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAge_KeyPress);
+            txtAge.Location = new Point(255, 24);
+            txtAge.Name = "txtAge";
+            txtAge.Size = new Size(200, 39);
+            txtAge.TabIndex = 2;
+            txtAge.KeyPress += txtAge_KeyPress;
             // 
             // cmbGender
             // 
-            this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbGender.FormattingEnabled = true;
-            this.cmbGender.Items.AddRange(new object[] {
-            "М",
-            "Ж"});
-            this.cmbGender.Location = new System.Drawing.Point(164, 57);
-            this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(200, 24);
-            this.cmbGender.TabIndex = 3;
+            cmbGender.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbGender.FormattingEnabled = true;
+            cmbGender.Items.AddRange(new object[] { "М", "Ж" });
+            cmbGender.Location = new Point(255, 69);
+            cmbGender.Name = "cmbGender";
+            cmbGender.Size = new Size(200, 40);
+            cmbGender.TabIndex = 3;
             // 
             // cmbWorkPlace
             // 
-            this.cmbWorkPlace.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbWorkPlace.FormattingEnabled = true;
-            this.cmbWorkPlace.Location = new System.Drawing.Point(163, 87);
-            this.cmbWorkPlace.Name = "cmbWorkPlace";
-            this.cmbWorkPlace.Size = new System.Drawing.Size(200, 24);
-            this.cmbWorkPlace.TabIndex = 4;
-            this.cmbWorkPlace.SelectedIndexChanged += new System.EventHandler(this.cmbWorkPlace_SelectedIndexChanged);
+            cmbWorkPlace.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbWorkPlace.FormattingEnabled = true;
+            cmbWorkPlace.Location = new Point(255, 123);
+            cmbWorkPlace.Name = "cmbWorkPlace";
+            cmbWorkPlace.Size = new Size(200, 40);
+            cmbWorkPlace.TabIndex = 4;
+            cmbWorkPlace.SelectedIndexChanged += cmbWorkPlace_SelectedIndexChanged;
             // 
             // lblFaculty
             // 
-            this.lblFaculty.AutoSize = true;
-            this.lblFaculty.Location = new System.Drawing.Point(23, 117);
-            this.lblFaculty.Name = "lblFaculty";
-            this.lblFaculty.Size = new System.Drawing.Size(78, 16);
-            this.lblFaculty.TabIndex = 8;
-            this.lblFaculty.Text = "Факультет";
+            lblFaculty.AutoSize = true;
+            lblFaculty.Location = new Point(23, 169);
+            lblFaculty.Name = "lblFaculty";
+            lblFaculty.Size = new Size(125, 32);
+            lblFaculty.TabIndex = 8;
+            lblFaculty.Text = "Факультет";
             // 
             // cmbFaculty
             // 
-            this.cmbFaculty.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFaculty.FormattingEnabled = true;
-            this.cmbFaculty.Location = new System.Drawing.Point(164, 117);
-            this.cmbFaculty.Name = "cmbFaculty";
-            this.cmbFaculty.Size = new System.Drawing.Size(200, 24);
-            this.cmbFaculty.TabIndex = 5;
+            cmbFaculty.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbFaculty.FormattingEnabled = true;
+            cmbFaculty.Location = new Point(255, 166);
+            cmbFaculty.Name = "cmbFaculty";
+            cmbFaculty.Size = new Size(200, 40);
+            cmbFaculty.TabIndex = 5;
             // 
             // lblStudyForm
             // 
-            this.lblStudyForm.AutoSize = true;
-            this.lblStudyForm.Location = new System.Drawing.Point(23, 147);
-            this.lblStudyForm.Name = "lblStudyForm";
-            this.lblStudyForm.Size = new System.Drawing.Size(117, 16);
-            this.lblStudyForm.TabIndex = 7;
-            this.lblStudyForm.Text = "Форма обучения";
+            lblStudyForm.AutoSize = true;
+            lblStudyForm.Location = new Point(23, 211);
+            lblStudyForm.Name = "lblStudyForm";
+            lblStudyForm.Size = new Size(202, 32);
+            lblStudyForm.TabIndex = 7;
+            lblStudyForm.Text = "Форма обучения";
             // 
             // cmbStudyForm
             // 
-            this.cmbStudyForm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbStudyForm.FormattingEnabled = true;
-            this.cmbStudyForm.Items.AddRange(new object[] {
-            "Бакалавриат",
-            "Магистратура",
-            "Специалитет",
-            "Аспирантура"});
-            this.cmbStudyForm.Location = new System.Drawing.Point(163, 148);
-            this.cmbStudyForm.Name = "cmbStudyForm";
-            this.cmbStudyForm.Size = new System.Drawing.Size(200, 24);
-            this.cmbStudyForm.TabIndex = 6;
+            cmbStudyForm.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbStudyForm.FormattingEnabled = true;
+            cmbStudyForm.Items.AddRange(new object[] { "Бакалавриат", "Магистратура", "Специалитет", "Аспирантура" });
+            cmbStudyForm.Location = new Point(255, 211);
+            cmbStudyForm.Name = "cmbStudyForm";
+            cmbStudyForm.Size = new Size(200, 40);
+            cmbStudyForm.TabIndex = 6;
             // 
             // lblGrade
             // 
-            this.lblGrade.AutoSize = true;
-            this.lblGrade.Location = new System.Drawing.Point(23, 178);
-            this.lblGrade.Name = "lblGrade";
-            this.lblGrade.Size = new System.Drawing.Size(104, 16);
-            this.lblGrade.TabIndex = 14;
-            this.lblGrade.Text = "Курс обучения";
+            lblGrade.AutoSize = true;
+            lblGrade.Location = new Point(23, 265);
+            lblGrade.Name = "lblGrade";
+            lblGrade.Size = new Size(179, 32);
+            lblGrade.TabIndex = 14;
+            lblGrade.Text = "Курс обучения";
             // 
             // cmbGrade
             // 
-            this.cmbGrade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbGrade.FormattingEnabled = true;
-            this.cmbGrade.Items.AddRange(new object[] {
-            1,
-            2,
-            3,
-            4,
-            5});
-            this.cmbGrade.Location = new System.Drawing.Point(163, 178);
-            this.cmbGrade.Name = "cmbGrade";
-            this.cmbGrade.Size = new System.Drawing.Size(200, 24);
-            this.cmbGrade.TabIndex = 15;
+            cmbGrade.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbGrade.FormattingEnabled = true;
+            cmbGrade.Items.AddRange(new object[] { 1, 2, 3, 4, 5 });
+            cmbGrade.Location = new Point(255, 265);
+            cmbGrade.Name = "cmbGrade";
+            cmbGrade.Size = new Size(200, 40);
+            cmbGrade.TabIndex = 15;
             // 
             // txtWorkPlaceAdditional
             // 
-            this.txtWorkPlaceAdditional.Enabled = false;
-            this.txtWorkPlaceAdditional.Location = new System.Drawing.Point(163, 117);
-            this.txtWorkPlaceAdditional.Name = "txtWorkPlaceAdditional";
-            this.txtWorkPlaceAdditional.Size = new System.Drawing.Size(199, 22);
-            this.txtWorkPlaceAdditional.TabIndex = 16;
+            txtWorkPlaceAdditional.Enabled = false;
+            txtWorkPlaceAdditional.Location = new Point(256, 344);
+            txtWorkPlaceAdditional.Name = "txtWorkPlaceAdditional";
+            txtWorkPlaceAdditional.Size = new Size(199, 39);
+            txtWorkPlaceAdditional.TabIndex = 16;
             // 
             // lblWorkPlaceAdditional
             // 
-            this.lblWorkPlaceAdditional.AutoSize = true;
-            this.lblWorkPlaceAdditional.Location = new System.Drawing.Point(23, 117);
-            this.lblWorkPlaceAdditional.Name = "lblWorkPlaceAdditional";
-            this.lblWorkPlaceAdditional.Size = new System.Drawing.Size(126, 16);
-            this.lblWorkPlaceAdditional.TabIndex = 17;
-            this.lblWorkPlaceAdditional.Text = "Вид деятельности";
+            lblWorkPlaceAdditional.AutoSize = true;
+            lblWorkPlaceAdditional.Location = new Point(23, 169);
+            lblWorkPlaceAdditional.Name = "lblWorkPlaceAdditional";
+            lblWorkPlaceAdditional.Size = new Size(211, 32);
+            lblWorkPlaceAdditional.TabIndex = 17;
+            lblWorkPlaceAdditional.Text = "Вид деятельности";
             // 
             // ParticipantInfoForm
             // 
-            this.ClientSize = new System.Drawing.Size(395, 242);
-            this.Controls.Add(this.lblWorkPlaceAdditional);
-            this.Controls.Add(this.txtWorkPlaceAdditional);
-            this.Controls.Add(this.cmbGrade);
-            this.Controls.Add(this.lblGrade);
-            this.Controls.Add(this.cmbStudyForm);
-            this.Controls.Add(this.lblStudyForm);
-            this.Controls.Add(this.cmbFaculty);
-            this.Controls.Add(this.lblFaculty);
-            this.Controls.Add(this.cmbWorkPlace);
-            this.Controls.Add(this.cmbGender);
-            this.Controls.Add(this.txtAge);
-            this.Controls.Add(this.lblOccupation);
-            this.Controls.Add(this.lblGender);
-            this.Controls.Add(this.lblAge);
-            this.Name = "ParticipantInfoForm";
-            this.Text = "Личные данные";
-            this.KeyPreview = true;
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ParticipiantInfoForm_KeyPress);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            ClientSize = new Size(755, 504);
+            Controls.Add(lblWorkPlaceAdditional);
+            Controls.Add(txtWorkPlaceAdditional);
+            Controls.Add(cmbGrade);
+            Controls.Add(lblGrade);
+            Controls.Add(cmbStudyForm);
+            Controls.Add(lblStudyForm);
+            Controls.Add(cmbFaculty);
+            Controls.Add(lblFaculty);
+            Controls.Add(cmbWorkPlace);
+            Controls.Add(cmbGender);
+            Controls.Add(txtAge);
+            Controls.Add(lblOccupation);
+            Controls.Add(lblGender);
+            Controls.Add(lblAge);
+            KeyPreview = true;
+            Name = "ParticipantInfoForm";
+            Text = "Личные данные";
+            KeyPress += ParticipiantInfoForm_KeyPress;
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 

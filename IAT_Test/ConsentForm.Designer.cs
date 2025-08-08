@@ -18,34 +18,30 @@ namespace IAT_Test
 
         private void InitializeComponent()
         {
-            this.richTextBoxConsent = new System.Windows.Forms.RichTextBox();
-            this.SuspendLayout();
+            richTextBoxConsent = new RichTextBox();
+            SuspendLayout();
             // 
             // richTextBoxConsent
             // 
-            this.richTextBoxConsent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.richTextBoxConsent.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxConsent.Cursor = System.Windows.Forms.Cursors.Default;
-            this.richTextBoxConsent.Location = new System.Drawing.Point(12, 12);
-            this.richTextBoxConsent.Name = "richTextBoxConsent";
-            this.richTextBoxConsent.ReadOnly = true;
-            this.richTextBoxConsent.Size = new System.Drawing.Size(776, 426);
-            this.richTextBoxConsent.TabIndex = 0;
-            this.richTextBoxConsent.TabStop = false;
-            this.richTextBoxConsent.Text = "Информированное согласие";
-            this.richTextBoxConsent.SelectionChanged += new System.EventHandler(this.richTextBoxConsent_SelectionChanged);
-            this.richTextBoxConsent.TextChanged += new System.EventHandler(this.richTextBoxConsent_TextChanged);
-            this.richTextBoxConsent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBoxConsent_KeyPress);
+            richTextBoxConsent.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            richTextBoxConsent.BorderStyle = BorderStyle.None;
+            richTextBoxConsent.Location = new Point(12, 12);
+            richTextBoxConsent.Name = "richTextBoxConsent";
+            richTextBoxConsent.ReadOnly = true;
+            richTextBoxConsent.Size = new Size(776, 426);
+            richTextBoxConsent.TabIndex = 0;
+            richTextBoxConsent.TabStop = false;
+            richTextBoxConsent.Text = "Информированное согласие";
+            richTextBoxConsent.SelectionChanged += richTextBoxConsent_SelectionChanged;
+            richTextBoxConsent.KeyPress += richTextBoxConsent_KeyPress;
             // 
             // ConsentForm
             // 
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.richTextBoxConsent);
-            this.Name = "ConsentForm";
-            this.Text = "Информированное согласие";
-            this.ResumeLayout(false);
+            ClientSize = new Size(800, 450);
+            Controls.Add(richTextBoxConsent);
+            Name = "ConsentForm";
+            Text = "Информированное согласие";
+            ResumeLayout(false);
 
         }
     }

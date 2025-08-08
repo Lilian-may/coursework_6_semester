@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace IAT_Test
+﻿namespace IAT_Test
 {
     public partial class InstructionForm : Form
     {
@@ -21,7 +10,7 @@ namespace IAT_Test
 
         private void LoadInstructionText()
         {
-            string consentPath = Path.Combine(Application.StartupPath, "./files/instruction.txt");
+            string consentPath = Path.Combine(Application.StartupPath, "./exmp/instruction.txt");
             if (File.Exists(consentPath))
             {
                 richTextBoxInstruction.Font = new Font(richTextBoxInstruction.Font.FontFamily, 15.0f);
@@ -33,11 +22,6 @@ namespace IAT_Test
             }
         }
 
-        private void InstructionForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void richTextBoxInstruction_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.DialogResult = DialogResult.OK;
@@ -47,6 +31,11 @@ namespace IAT_Test
         private void richTextBoxInstruction_SelectionChanged(object sender, EventArgs e)
         {
             this.richTextBoxInstruction.SelectionLength = 0;
+        }
+
+        private void richTextBoxInstruction_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
